@@ -9,7 +9,7 @@ import { GitUsuarios } from '../git-usuarios';
 })
 export class UsersComponent implements OnInit {
 
-  searchUsers: GitUsuarios;
+  searchResults: GitUsuarios;
   searchQuery: string;
   displayQuery: string;
   
@@ -24,7 +24,7 @@ export class UsersComponent implements OnInit {
 
   gitUsuarios =()=>{
     this.GitSearchService.users(this.searchQuery).then((response)=>{
-      this.searchUsers = response;
+      this.searchResults = response;
       this.displayQuery= this.searchQuery;
       //alert('Total repositories found: '+response.total_count);
     },(error) => {
