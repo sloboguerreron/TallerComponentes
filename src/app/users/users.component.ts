@@ -10,22 +10,22 @@ import { GitUsuarios } from '../git-usuarios';
 export class UsersComponent implements OnInit {
 
   searchUsers: GitUsuarios;
-  searchQueryUsers: string;
-  displayQueryUsers: string;
+  searchQuery: string;
+  displayQuery: string;
   
 
   constructor(private GitSearchService: GitSearchService) { }
 
   ngOnInit() {
-    this.searchQueryUsers = 'pedro';
-    this.displayQueryUsers = this.searchQueryUsers;
+    this.searchQuery = 'pedro';
+    this.displayQuery = this.searchQuery;
     this.gitUsuarios();
   }
 
   gitUsuarios =()=>{
-    this.GitSearchService.users(this.searchQueryUsers).then((response)=>{
+    this.GitSearchService.users(this.searchQuery).then((response)=>{
       this.searchUsers = response;
-      this.displayQueryUsers= this.searchQueryUsers;
+      this.displayQuery= this.searchQuery;
       //alert('Total repositories found: '+response.total_count);
     },(error) => {
       alert('Error: '+ error.statusText);

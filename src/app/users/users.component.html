@@ -1,5 +1,5 @@
 <h3>{{displayQueryUsers}}</h3>
-<input name="query" placeholder="Enter search" [(ngModel)]="searchQueryUsers"/>
+<input name="query" placeholder="Enter search" [(ngModel)]="searchQuery"/>
 <button (click) = "gitUsuarios()">Submit</button>
 <div *ngIf="searchUsers && searchUsers.total_count !== 0 ; else elseBlockUsers">
 <h3  [ngClass]="'total'"> Total-Results : {{searchResults.total_count}}</h3>
