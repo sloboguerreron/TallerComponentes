@@ -12,12 +12,12 @@ export class GitSearchService {
   }> = [];
   constructor(private http: HttpClient) { }
 
-  gitSearch = (query:string):Promise<GitSearch> => {
+  gitSearch = (query:string, page:string):Promise<GitSearch> => {
     let promise = new Promise<GitSearch>((resolve,reject)=>{
       if(this.cachedValues[query]){
         resolve(this.cachedValues[query]);
       }else{
-        this.http.get('https://api.github.com/search/repositories?q='+query).toPromise().then((response)=>{
+        this.http.get('https://api.github.com/search/repositories?q='+query+';page='+page).toPromise().then((response)=>{
           resolve(response as GitSearch)
         },(error)=>{
           reject(error);
@@ -27,12 +27,12 @@ export class GitSearchService {
     return promise
   }
 
-  users = (query:string):Promise<User> => {
+  users = (query:string, page:string):Promise<User> => {
     let promise = new Promise<User>((resolve,reject)=>{
       if(this.cachedValues[query]){
         resolve(this.cachedValues[query]);
       }else{
-        this.http.get('https://api.github.com/search/users?q='+query).toPromise().then((response)=>{
+        this.http.get('https://api.github.com/search/users?q='+query+';page='+page).toPromise().then((response)=>{
           resolve(response as User)
         },(error)=>{
           reject(error);
